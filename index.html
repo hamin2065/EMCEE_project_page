@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="EMCEE: Improving Multilingual Capability of LLMs via Bridging Knowledge and Reasoning with Extracted Synthetic Multilingual Context">
+  <meta name="keywords" content="EMCEE, multilingual LLMs, synthetic context, LLM-as-a-Judge, multilingual reasoning, ACL 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EMCEE | ACL 2026</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌏</text></svg>">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+  <nav class="navbar lab-nav" role="navigation" aria-label="main navigation">
+    <div class="navbar-center">
+      <a class="navbar-item brand-combo" href="https://ml3-yonsei.github.io/" target="_blank" rel="noopener noreferrer">
+        <img src="./static/images/ML3_transparent.png" alt="Machine and Language Learning Lab logo" class="brand-logo">
+        <span class="brand-text">Machine &amp; Language<br>Learning Lab @ Yonsei</span>
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero publication-hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="columns is-vcentered is-variable is-6">
+          <div class="column is-6">
+            <p class="venue-pill">ACL 2026</p>
+            <h1 class="title publication-title">
+              EMCEE: Improving Multilingual Capability of LLMs via Bridging Knowledge and Reasoning with Extracted Synthetic Multilingual Context
+            </h1>
+            <p class="subtitle publication-subtitle">
+              A prompting framework that surfaces language-specific knowledge from an LLM, pairs it with reasoning, and uses a judge to choose the better path for each multilingual query.
+            </p>
+            <div class="publication-authors">
+              <span class="author-block"><a href="https://github.com/hamin2065" target="_blank" rel="noopener noreferrer">Hamin Koo</a><sup>1</sup></span>
+              <span class="author-block"><a href="https://sites.google.com/view/jaehyungkim" target="_blank" rel="noopener noreferrer">Jaehyung Kim</a><sup>1</sup></span>
+            </div>
+            <div class="publication-affiliation"><sup>1</sup>Yonsei University</div>
+            <div class="publication-links">
+              <a href="https://arxiv.org/pdf/2503.05846" class="external-link button is-normal is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+              <a href="https://arxiv.org/abs/2503.05846" class="external-link button is-normal is-light">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+              <a href="https://github.com/hamin2065/EMCEE" class="external-link button is-normal is-light">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+          <div class="column is-6">
+            <figure class="hero-figure">
+              <img src="./static/images/emcee_preview.png" alt="EMCEE project preview">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section stat-section">
+    <div class="container is-max-desktop">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-value">16.4%</span>
+          <span class="stat-label">average relative improvement overall</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">31.7%</span>
+          <span class="stat-label">average relative improvement in low-resource languages</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">24</span>
+          <span class="stat-label">languages covered across the evaluation suite</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">4</span>
+          <span class="stat-label">benchmarks: M3-Exam, MKQA, XNLI, and XCOPA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Abstract</h2>
+      <div class="content paper-text">
+        <p>
+          Large Language Models (LLMs) have achieved impressive progress across a wide range of tasks, yet their heavy reliance on English-centric training data leads to significant performance degradation in non-English languages. While existing multilingual prompting methods emphasize reformulating queries into English or enhancing reasoning capabilities, they often fail to incorporate the language- and culture-specific grounding that is essential for some queries. 
+        </p>
+        <p>
+          To address this limitation, we propose <b>EMCEE</b> (Extracting synthetic Multilingual Context and merging), a simple yet effective framework that enhances the multilingual capabilities of LLMs by explicitly extracting and utilizing query-relevant knowledge from the LLM itself. In particular, EMCEE first extracts synthetic context to uncover latent, language-specific knowledge encoded within the LLM, and then dynamically merges this contextual insight with reasoning-oriented outputs through a judgment-based selection mechanism. Extensive experiments on four multilingual benchmarks covering diverse languages and tasks demonstrate that EMCEE consistently outperforms prior approaches, achieving an average relative improvement of <b>16.4%</b> overall and <b>31.7%</b> in low-resource languages.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section motivation-section" id="motivation">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Motivation</h2>
+      <div class="columns is-variable is-5">
+        <div class="column">
+          <div class="insight-block">
+            <h3 class="title is-5">🧠 Reasoning is not the only bottleneck</h3>
+            <p>Mathematics and science questions often benefit from English chain-of-thought, but social science, language, and culture-specific questions need local grounding.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="insight-block">
+            <h3 class="title is-5">🗣️ Translation can erase context</h3>
+            <p>Reformulating a native query in English can make the model more fluent while losing the cultural cues needed to select the correct answer.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="insight-block">
+            <h3 class="title is-5">🔎 External retrieval is not always enough</h3>
+            <p>EMCEE instead asks the model to surface useful latent knowledge as synthetic context, avoiding dependence on an external retriever or database.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="method">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Method</h2>
+      <figure class="method-figure">
+        <img src="./static/images/emcee_overview.png" alt="EMCEE method diagram">
+        <figcaption>
+          EMCEE creates a context-enriched answer, creates a reasoning-focused answer, and lets an LLM-as-a-Judge select the final response.
+        </figcaption>
+      </figure>
+      <div class="method-grid">
+        <div class="method-step">
+          <h3 class="title is-5"><span class="step-index">1</span>Extract synthetic context</h3>
+          <p>The LLM is prompted to write concise background knowledge for the native query, including cultural or contextual elements when useful.</p>
+        </div>
+        <div class="method-step">
+          <h3 class="title is-5"><span class="step-index">2</span>Generate a reasoning candidate</h3>
+          <p>In parallel, the model answers with a reasoning-oriented prompt, preserving the strengths of English chain-of-thought style prompting.</p>
+        </div>
+        <div class="method-step">
+          <h3 class="title is-5"><span class="step-index">3</span>Merge by judgment</h3>
+          <p>An LLM-as-a-Judge compares both responses with awareness of the target language background and chooses the more plausible final answer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section results-section" id="results">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 section-title">Results</h2>
+      <p class="table-note results-note">
+        Main GPT-4o-mini results across multilingual benchmarks. Accuracy: M3-Exam, XNLI, XCOPA; F1: MKQA.
+      </p>
+      <div class="table-container">
+        <table class="table is-bordered is-narrow has-text-centered result-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Method</th>
+              <th colspan="3">M3-Exam</th>
+              <th colspan="3">MKQA</th>
+              <th colspan="3">XNLI</th>
+              <th colspan="3">XCOPA</th>
+            </tr>
+            <tr>
+              <th>All</th><th>High</th><th>Low</th>
+              <th>All</th><th>High</th><th>Low</th>
+              <th>All</th><th>High</th><th>Low</th>
+              <th>All</th><th>High</th><th>Low</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>NATIVE-BASIC</td><td>65.2</td><td>72.7</td><td>57.7</td><td>44.1</td><td>48.6</td><td>38.5</td><td>66.2</td><td>74.0</td><td>58.4</td><td>79.3</td><td>94.2</td><td>61.4</td></tr>
+            <tr><td>ENG-BASIC</td><td>64.5</td><td>72.7</td><td>56.4</td><td>48.1</td><td>49.8</td><td>46.0</td><td>71.4</td><td>74.6</td><td>68.1</td><td>55.3</td><td>57.3</td><td>52.8</td></tr>
+            <tr><td>TRANS-GOOGLE</td><td>59.9</td><td>70.1</td><td>49.8</td><td>50.3</td><td>50.4</td><td>50.2</td><td>70.5</td><td>73.4</td><td>67.6</td><td>66.0</td><td>65.2</td><td>67.3</td></tr>
+            <tr><td>XLT</td><td>70.4</td><td>76.9</td><td>63.8</td><td>51.1</td><td>50.9</td><td>51.5</td><td>72.6</td><td>74.3</td><td>71.0</td><td>91.1</td><td>95.8</td><td>85.4</td></tr>
+            <tr><td>NATIVE-COT</td><td>70.4</td><td>76.5</td><td>64.4</td><td>45.5</td><td>49.2</td><td>40.9</td><td>68.4</td><td>70.1</td><td>66.6</td><td>90.0</td><td>96.3</td><td>82.4</td></tr>
+            <tr><td>ENG-COT</td><td>74.6</td><td>81.8</td><td>67.3</td><td>49.4</td><td>49.5</td><td>49.3</td><td>73.2</td><td>73.7</td><td>72.7</td><td>90.5</td><td>96.0</td><td>83.8</td></tr>
+            <tr><td>RAG (NATIVE)</td><td>68.7</td><td>80.4</td><td>57.0</td><td>42.5</td><td>45.3</td><td>39.0</td><td>67.4</td><td>69.9</td><td>64.9</td><td>83.6</td><td>92.3</td><td>73.2</td></tr>
+            <tr><td>RAG (ENG)</td><td>72.1</td><td class="best">84.0</td><td>63.9</td><td>44.7</td><td>44.9</td><td>44.5</td><td>70.4</td><td>71.1</td><td>69.7</td><td>87.9</td><td>94.0</td><td>80.6</td></tr>
+            <tr><td>EMCEE (ROUTE)</td><td>76.2</td><td>83.1</td><td>69.2</td><td>50.8</td><td>51.6</td><td>49.8</td><td>73.1</td><td>73.9</td><td>72.3</td><td>90.5</td><td>96.0</td><td>83.8</td></tr>
+            <tr class="ours-row"><td>EMCEE (Ours)</td><td class="best">77.4</td><td>83.3</td><td class="best">71.5</td><td class="best">52.3</td><td class="best">52.2</td><td class="best">52.4</td><td class="best">74.3</td><td class="best">74.7</td><td class="best">73.9</td><td class="best">92.0</td><td class="best">96.8</td><td class="best">86.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="result-callouts">
+        <div class="callout">
+          <h3 class="title is-5">Low-resource gains</h3>
+          <p>EMCEE achieves the highest low-resource score on all four benchmarks: 71.5 on M3-Exam, 52.4 on MKQA, 73.9 on XNLI, and 86.2 on XCOPA.</p>
+        </div>
+        <div class="callout">
+          <h3 class="title is-5">Best overall performance</h3>
+          <p>Across the All columns, EMCEE is best on every dataset, reaching 77.4 on M3-Exam, 52.3 on MKQA, 74.3 on XNLI, and 92.0 on XCOPA.</p>
+        </div>
+        <div class="callout">
+          <h3 class="title is-5">Merging beats routing</h3>
+          <p>Compared with EMCEE (ROUTE), the full EMCEE method improves every All and Low column, showing that judging both candidate responses is more reliable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section analysis-section" id="analysis">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 section-title">Analysis</h2>
+      <p class="table-note">
+        Beyond the main benchmark table, EMCEE is evaluated through component ablations, model compatibility tests, cultural-alignment QA, stronger LLMs, and reasoning-model settings.
+      </p>
+
+      <div class="analysis-grid">
+        <div class="analysis-card wide-card">
+          <h3 class="title is-5">Component Ablation on M3-Exam</h3>
+          <p class="analysis-copy">
+            Each EMCEE component contributes: chain-of-thought reasoning, extracted synthetic context, and judge-based merging together produce the best low-resource performance.
+          </p>
+          <div class="table-container">
+            <table class="table is-bordered is-narrow has-text-centered mini-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>CoT</th>
+                  <th>ExT</th>
+                  <th>MeR</th>
+                  <th>All</th>
+                  <th>High</th>
+                  <th>Low</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>NATIVE-BASIC</td><td>-</td><td>-</td><td>-</td><td>65.2</td><td>72.7</td><td>57.7</td></tr>
+                <tr><td>ENG-COT</td><td>✓</td><td>-</td><td>-</td><td>74.6</td><td>81.8</td><td>67.3</td></tr>
+                <tr><td>Extract only</td><td>-</td><td>✓</td><td>-</td><td>74.7</td><td>82.0</td><td>67.5</td></tr>
+                <tr><td>CoT + Merge</td><td>✓</td><td>-</td><td>✓</td><td>75.2</td><td class="best">83.4</td><td>67.1</td></tr>
+                <tr class="ours-row"><td>EMCEE</td><td>✓</td><td>✓</td><td>✓</td><td class="best">77.4</td><td>83.3</td><td class="best">71.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="analysis-card">
+          <h3 class="title is-5">Compatible Across LLMs</h3>
+          <p class="analysis-copy">
+            EMCEE remains effective across GPT-4o, Claude-3.5-Haiku, and Llama-3.1-8B on M3-Exam.
+          </p>
+          <table class="table is-bordered is-narrow has-text-centered mini-table">
+            <thead>
+              <tr><th>Method</th><th>GPT-4o</th><th>Claude-Haiku</th><th>Llama-3.1-8B</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>NATIVE-BASIC</td><td>78.1</td><td>67.4</td><td>49.8</td></tr>
+              <tr><td>TRANS-GOOGLE</td><td>68.4</td><td>60.1</td><td>53.9</td></tr>
+              <tr><td>XLT</td><td>81.8</td><td>74.0</td><td>25.8</td></tr>
+              <tr><td>NATIVE-COT</td><td>83.9</td><td>74.8</td><td>36.8</td></tr>
+              <tr><td>ENG-COT</td><td>82.4</td><td>75.4</td><td>40.4</td></tr>
+              <tr class="ours-row"><td>EMCEE</td><td class="best">85.7</td><td class="best">75.6</td><td class="best">56.9</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="analysis-card">
+          <h3 class="title is-5">Cultural Alignment on Subjective QA</h3>
+          <p class="analysis-copy">
+            On GlobalOpinionQA, EMCEE improves low-resource country alignment while staying competitive overall.
+          </p>
+          <table class="table is-bordered is-narrow has-text-centered mini-table">
+            <thead>
+              <tr><th>Method</th><th>All</th><th>High</th><th>Low</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>NATIVE-BASIC</td><td>65.3</td><td>76.8</td><td>53.7</td></tr>
+              <tr><td>ENG-BASIC</td><td>68.6</td><td>78.9</td><td>58.3</td></tr>
+              <tr><td>TRANS-GOOGLE</td><td>68.5</td><td class="best">79.7</td><td>57.4</td></tr>
+              <tr><td>XLT</td><td>55.2</td><td>66.0</td><td>44.5</td></tr>
+              <tr><td>NATIVE-COT</td><td>63.2</td><td>73.9</td><td>52.4</td></tr>
+              <tr><td>ENG-COT</td><td>65.4</td><td>74.9</td><td>53.9</td></tr>
+              <tr class="ours-row"><td>EMCEE</td><td class="best">69.0</td><td>77.6</td><td class="best">60.4</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="analysis-card">
+          <h3 class="title is-5">Stronger LLMs</h3>
+          <p class="analysis-copy">
+            EMCEE generalizes to stronger models on a sampled M3-Exam setting, leading GPT-5 and matching the best Claude-4-Sonnet result.
+          </p>
+          <table class="table is-bordered is-narrow has-text-centered mini-table">
+            <thead>
+              <tr><th rowspan="2">Method</th><th colspan="3">GPT-5</th><th colspan="3">Claude-4-Sonnet</th></tr>
+              <tr><th>All</th><th>High</th><th>Low</th><th>All</th><th>High</th><th>Low</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>NATIVE-BASIC</td><td>74.3</td><td>83.8</td><td class="best">64.8</td><td>79.3</td><td class="best">90.0</td><td>68.5</td></tr>
+              <tr><td>ENG-COT</td><td>68.4</td><td>81.3</td><td>55.5</td><td>81.5</td><td>89.5</td><td>73.5</td></tr>
+              <tr><td>XLT</td><td>58.4</td><td>70.0</td><td>46.8</td><td class="best">82.3</td><td>89.5</td><td class="best">75.0</td></tr>
+              <tr class="ours-row"><td>EMCEE</td><td class="best">76.0</td><td class="best">87.5</td><td>64.5</td><td class="best">82.3</td><td>89.5</td><td class="best">75.0</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="analysis-card">
+          <h3 class="title is-5">Reasoning LLMs</h3>
+          <p class="analysis-copy">
+            With Qwen3-8B, EMCEE improves both without and with think-mode, suggesting extraction adds value beyond implicit reasoning.
+          </p>
+          <table class="table is-bordered is-narrow has-text-centered mini-table">
+            <thead>
+              <tr><th>Setting</th><th>Method</th><th>All</th><th>High</th><th>Low</th></tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="3">w/o Think</td><td>NATIVE-BASIC</td><td>37.8</td><td>44.6</td><td>31.0</td></tr>
+              <tr><td>ENG-BASIC</td><td>45.6</td><td>49.2</td><td>42.0</td></tr>
+              <tr class="ours-row"><td>EMCEE</td><td class="best">67.3</td><td class="best">80.0</td><td class="best">54.7</td></tr>
+              <tr><td rowspan="4">w/ Think</td><td>NATIVE-BASIC</td><td>49.5</td><td>67.1</td><td>31.8</td></tr>
+              <tr><td>ENG-BASIC</td><td>45.6</td><td>49.2</td><td>42.0</td></tr>
+              <tr><td>TRANS-GOOGLE</td><td>49.3</td><td>65.4</td><td>33.1</td></tr>
+              <tr class="ours-row"><td>EMCEE</td><td class="best">65.0</td><td class="best">79.4</td><td class="best">50.7</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section code-section" id="code">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Code</h2>
+      <div class="columns is-variable is-5">
+        <div class="column">
+          <div class="code-card">
+            <h3 class="title is-5">Repository</h3>
+            <p>The implementation includes dataset loaders, baselines, EMCEE prompting strategies, evaluation utilities, and scripts for M3Exam, MKQA, XNLI, and XCOPA.</p>
+            <a href="https://github.com/hamin2065/EMCEE" class="button is-dark">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Open GitHub</span>
+            </a>
+          </div>
+        </div>
+        <div class="column">
+          <pre class="terminal-block"><code>git clone https://github.com/hamin2065/EMCEE.git
+cd EMCEE
+pip install -r requirements.txt
+
+bash run_evaluation.sh M3Exam gpt merging</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">BibTeX</h2>
+      <pre class="bibtex-block"><code>@inproceedings{koo2026emcee,
+  title={EMCEE: Improving Multilingual Capability of LLMs via Bridging Knowledge and Reasoning with Extracted Synthetic Multilingual Context},
+  author={Koo, Hamin and Kim, Jaehyung},
+  booktitle={Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container is-max-desktop">
+      <p>
+        Project page adapted from the Nerfies project-page template. Content is based on the EMCEE paper and official repository.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

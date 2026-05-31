@@ -1,0 +1,503 @@
+:root {
+  --ink: #182028;
+  --muted: #5d6975;
+  --line: #dfe5e8;
+  --panel: #ffffff;
+  --soft: #f5f7f8;
+  --mist: #eef6f3;
+  --teal: #0f766e;
+  --coral: #c75146;
+  --gold: #b57922;
+  --indigo: #4556a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--teal);
+}
+
+a:hover {
+  color: #0b534e;
+}
+
+.lab-nav {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.45rem 0;
+}
+
+.brand-combo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+.brand-text {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.15;
+  color: #111;
+  text-align: left;
+}
+
+.publication-hero {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(199, 81, 70, 0.14), transparent 26%),
+    linear-gradient(135deg, #f7fbfa 0%, #ffffff 46%, #f7f3ee 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.publication-hero .hero-body {
+  padding: 3.25rem 1.5rem 3rem;
+}
+
+.venue-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 0.8rem;
+  margin-bottom: 1.15rem;
+  border: 1px solid rgba(15, 118, 110, 0.35);
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal);
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  border-radius: 8px;
+}
+
+.publication-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: clamp(1.75rem, 1.25rem + 1.55vw, 2.85rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+  margin-bottom: 1.2rem;
+  color: #111820;
+}
+
+.publication-subtitle {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  max-width: 650px;
+  margin-bottom: 1.2rem;
+}
+
+.publication-authors,
+.publication-affiliation {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 1.08rem;
+}
+
+.author-block {
+  display: inline-block;
+  margin-right: 0.65rem;
+}
+
+.author-block a {
+  color: var(--indigo);
+  font-weight: 700;
+}
+
+.publication-affiliation {
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.publication-links {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.publication-links .button {
+  border-radius: 8px;
+  font-weight: 700;
+  border-color: #cfd7dc;
+}
+
+.publication-links .button.is-dark {
+  background: #1f2933;
+}
+
+.hero-figure {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.hero-figure img,
+.method-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-figure img {
+  border-radius: 0;
+}
+
+.section {
+  padding: 4rem 1.5rem;
+}
+
+.section-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  letter-spacing: 0;
+  margin-bottom: 1.35rem;
+}
+
+.stat-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: #fff;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stat-card,
+.insight-block,
+.method-step,
+.callout,
+.code-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.stat-card {
+  min-height: 128px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-value {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  color: var(--coral);
+  font-size: 2.1rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
+.paper-text {
+  font-size: 1.05rem;
+  color: #26313a;
+}
+
+.paper-text p {
+  margin-bottom: 1rem;
+}
+
+.motivation-section,
+.results-section,
+.analysis-section {
+  background: var(--soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.insight-block {
+  height: 100%;
+  padding: 1.35rem;
+}
+
+.insight-block .title,
+.method-step .title,
+.callout .title,
+.code-card .title {
+  margin-bottom: 0.65rem;
+  color: #16232d;
+}
+
+.insight-block p,
+.method-step p,
+.callout p,
+.code-card p,
+.table-note {
+  color: var(--muted);
+}
+
+.method-figure {
+  margin: 0 0 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.8rem;
+}
+
+.method-figure figcaption {
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.method-step {
+  padding: 1.25rem;
+}
+
+.method-step .title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step-index {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mist);
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.table-note {
+  max-width: 900px;
+  margin: -0.5rem auto 1.25rem;
+  text-align: center;
+}
+
+.results-note {
+  max-width: none;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.result-table {
+  width: 100%;
+  min-width: 1060px;
+  background: #fff;
+  font-size: 0.88rem;
+}
+
+.result-table th {
+  background: #eef3f2;
+  color: #142129;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.result-table td {
+  white-space: nowrap;
+}
+
+.result-table td:first-child {
+  text-align: left;
+  font-weight: 700;
+}
+
+.ours-row {
+  background: #fff7f1;
+  color: #111820;
+}
+
+.ours-row td {
+  border-top: 2px solid var(--coral);
+}
+
+.result-table td.best {
+  font-weight: 800;
+  color: #111820;
+}
+
+.result-callouts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.callout {
+  padding: 1.25rem;
+  border-top: 4px solid var(--gold);
+}
+
+.analysis-section {
+  background: #fbfcfc;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.analysis-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.analysis-card.wide-card {
+  grid-column: 1 / -1;
+}
+
+.analysis-card .title {
+  margin-bottom: 0.55rem;
+}
+
+.analysis-copy {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.mini-table {
+  width: 100%;
+  min-width: 520px;
+  margin-bottom: 0;
+  font-size: 0.86rem;
+}
+
+.mini-table th {
+  background: #eef3f2;
+  color: #142129;
+  vertical-align: middle;
+}
+
+.mini-table td:first-child {
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.code-section {
+  background: #fff;
+}
+
+.code-card {
+  height: 100%;
+  padding: 1.4rem;
+}
+
+.code-card .button {
+  margin-top: 0.55rem;
+}
+
+.terminal-block,
+.bibtex-block {
+  margin: 0;
+  padding: 1.25rem;
+  border-radius: 8px;
+  background: #172026;
+  color: #e8f1f2;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.bibtex-block {
+  background: #f3f6f7;
+  color: #1d2932;
+  border: 1px solid var(--line);
+}
+
+.footer {
+  padding: 1.5rem;
+  background: #f6f7f8;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.94rem;
+}
+
+@media screen and (max-width: 1023px) {
+  .publication-hero .hero-body {
+    padding-top: 2.5rem;
+  }
+
+  .stat-grid,
+  .method-grid,
+  .result-callouts,
+  .analysis-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .brand-logo {
+    height: 54px;
+  }
+
+  .brand-text {
+    font-size: 0.82rem;
+  }
+
+  .publication-hero .hero-body {
+    padding: 2rem 1rem;
+  }
+
+  .publication-title {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .stat-grid,
+  .method-grid,
+  .result-callouts,
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-links .button {
+    flex: 1 1 150px;
+  }
+
+  .results-note {
+    white-space: normal;
+  }
+
+  .hero-figure {
+    margin-top: 1.25rem;
+  }
+}
